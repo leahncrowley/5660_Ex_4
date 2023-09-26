@@ -1,5 +1,5 @@
 ---
-title: "Pseudogymnoascus destructans Presence and Bat Morphometrics"
+title: "*Pseudogymnoascus destructans* Presence and Bat Morphometrics"
 author: "Leah N. Crowley"
 date: "2023-09-26"
 output:
