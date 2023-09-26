@@ -2,7 +2,10 @@
 title: "Pseudogymnoascus destructans Presence and Bat Morphometrics"
 author: "Leah N. Crowley"
 date: "2023-09-26"
-output: html_document
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -24,6 +27,10 @@ knitr::opts_chunk$set(echo = FALSE)
 ![](C:/Users/lcrowley1/OneDrive%20-%20Austin%20Peay%20State%20University/Desktop/Advanced/4-GLMS/5660_Ex_4/pd.jpg){width="506"}
 
 Wing from dead tri-colored bat (*Perimyotis subflavus*) shows points of orange-yellow fluorescence when exposed to UV light. Read more [here](https://www.usgs.gov/programs/environmental-health-program/science/black-light-detects-white-nose-syndrome-bats)
+
+# What is Pd?
+
+# Pd and Bat Age
 
 ```{r Pd and Bat Age - Plot, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -51,6 +58,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
+# Pd and Bat Mass
+
 ```{r Pd and Bat Mass - Plot, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -65,12 +74,15 @@ knitr::opts_chunk$set(echo = FALSE)
   
 ```
 
-```{r Pd and Bat Mass - Model, echo=FALSE}
+````{r Pd and Bat Mass - Model, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
-# Model this relationship: 
-  model_bats_mass <- glm(pd ~ mass.grams, data=bats, family=binomial)
-  model_bats_mass  
-  coef(model_bats_mass)
-  confint(model_bats_mass)
-  summary(model_bats_mass)
+# Model this relationship:
+
+model_bats_mass <- glm(pd ~ mass.grams, data=bats, family=binomial) 
+model_bats_mass
+coef(model_bats_mass) 
+confint(model_bats_mass) 
+summary(model_bats_mass)
+
+````
