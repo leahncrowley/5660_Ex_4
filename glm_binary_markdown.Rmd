@@ -1,0 +1,76 @@
+---
+title: "Pseudogymnoascus destructans Presence and Bat Morphometrics"
+author: "Leah N. Crowley"
+date: "2023-09-26"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Call requried packages to workspace: 
+  library(ggplot2)
+  library(arm)
+  library(ggfortify)
+  library(performance)
+  library(AICcmodavg)
+  library(grid)
+  
+# Read in data you are using for this assignment: 
+  bats <- read.csv("bats.csv")
+  
+```
+
+![](C:/Users/lcrowley1/OneDrive%20-%20Austin%20Peay%20State%20University/Desktop/Advanced/4-GLMS/5660_Ex_4/pd.jpg){width="506"}
+
+Wing from dead tri-colored bat (*Perimyotis subflavus*) shows points of orange-yellow fluorescence when exposed to UV light. Read more [here](https://www.usgs.gov/programs/environmental-health-program/science/black-light-detects-white-nose-syndrome-bats)
+
+```{r Pd and Bat Age - Plot, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Plot binary data - Presence of P. destructans on bat as a function of bat age in years
+  ggplot(bats, aes(age.years, pd)) +
+    geom_point(size=3) +
+    geom_smooth(method="glm", method.args=list(family="binomial"(link="logit")), color = "cyan") +
+    labs(title="Bat Age and Fungal Presence") +
+    ylab ("Probability of Fungus Presence") +
+    xlab ("Bat Age (Years)") +
+    theme_light()
+
+```
+
+```{r Pd and Bat Age - Model, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Model this relationship: 
+  model_bats_age <- glm(pd ~ age.years, data=bats, family=binomial)
+  model_bats_age  
+  coef(model_bats_age)
+  confint(model_bats_age)
+  summary(model_bats_age)
+
+```
+
+```{r Pd and Bat Mass - Plot, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Plot binary data - Presence of P. destructans on bat as a function of bat mass in grams
+  ggplot(bats, aes(mass.grams, pd)) +
+    geom_point(size=3) +
+    geom_smooth(method="glm", method.args=list(family="binomial"(link="logit")), color = "cyan") +
+    labs(title="Bat Mass and Fungal Presence") +
+    ylab ("Probability of Fungus Presence") +
+    xlab ("Bat Mass (g)") +
+    theme_light()
+  
+```
+
+```{r Pd and Bat Mass - Model, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Model this relationship: 
+  model_bats_mass <- glm(pd ~ mass.grams, data=bats, family=binomial)
+  model_bats_mass  
+  coef(model_bats_mass)
+  confint(model_bats_mass)
+  summary(model_bats_mass)
