@@ -73,24 +73,18 @@ knitr::opts_chunk$set(echo = FALSE)
   summary(model_bats_age)
 
 ```
+
 ## Interpretations
-**Coefficient estimate**: average change in the odds of the response variable associated with a one unit increase in each predictor variable... Here, a one unit increase in the 'age' predictor variable is associated with an average change of **0.13416** in the log odds of the response variable '*Pd* presence' being a 1. Lower values of age appear to be associated with a lower likelihood of *Pd* being present.  
 
-**P-value**: The p-value for the 'age' predictor variable is **0.0701**, which is not less than 0.05. So, we can say that age is *not* a statistically significant predictor variable in this model. 
+<font size="4">**Slope**:</font> Dividing the slope coefficient by four will give us an approximate estimate for the maximum predicted effect on the response of a unit change in the predictor. Slope of the 'age' predictor variable was **0.13**. In this case, a difference in 1 unit of bat age (years) corresponds to a increase in the probability of fungus presence of 3.2%, since 0.13/4 = 0.032.
 
-**Residual deviance**: How well can the response variable be predicted by the specific model? The lower the value, the better the model is able to predict the value of the response variable. Here, the residual deviance was **57.108  on 42  degrees of freedom**. o fully interpret this, we will have to compute the Chi-Square statistic... (Null deviance - Residual deviance) with *P* degrees of freedom. Ours is about 3, with 1 dof. This generates a p-value of about 0.083265 (via [statology](https://www.statology.org/interpret-glm-output-in-r/), which still is not significant. Age may not be the best predictor of *Pd* presence. 
+<font size="4">**AIC**:</font> For the scope of this assignment, I will compare this model's AIC value of **61.108** to the AIC value of the next model, which uses bat mass as a predictor variable.
 
-**AIC** For the scope of this assignment, I will compare this model's AIC value of **61.108** to the AIC value of the next model, which uses bat mass as a predictor variable. 
+<font size="4">**P-value**:</font> The p-value for the 'age' predictor variable is **0.0701**, which is not less than 0.05. So, we can say that age is *not* a statistically significant predictor variable in this model.
 
-**Slope**: Dividing the slope coefficient by four will give us an approximate estimate for the maximum predicted effect on the response of a unit change in the predictor. Slope of the 'age' predictor variable was 
+<font size="4">**Residual deviance**:</font> How well can the response variable be predicted by the specific model? The lower the value, the better the model is able to predict the value of the response variable. Here, the residual deviance was **57.108 on 42 degrees of freedom**. To fully interpret this, we will have to compute the Chi-Square statistic... (Null deviance - Residual deviance) with *P* degrees of freedom. Ours is about 3, with 1 dof. This generates a p-value of about 0.083265 (via [statology](https://www.statology.org/interpret-glm-output-in-r/), which still is not significant. Age may not be the best predictor of *Pd* presence.
 
-
-
-5.1.
-\
-\
-In this case, a difference in 1 unit of grain size (mm) corresponds to a increase in the probability of spider presence of 128% since 5.1/4 = 1.28. (*100 to convert to percent=128%). Notice the scale of grainsize; it is 0.24 to 1.04 mm. 
-
+<font size="4">**Coefficient estimate**:</font> average change in the odds of the response variable associated with a one unit increase in each predictor variable... Here, a one unit increase in the 'age' predictor variable is associated with an average change of **0.13416** in the log odds of the response variable '*Pd* presence' being a 1. Lower values of age appear to be associated with a lower likelihood of *Pd* being present.
 
 # Pd and Bat Mass
 
@@ -122,5 +116,13 @@ summary(model_bats_mass)
 ```
 
 ## Interpretations
-**Coefficient estimate**: average change in the odds of the response variable associated with a one unit increase in each predictor variable... Here, the 'mass' predictor variable is associated with an average change of 0.4630 in the log odds of the response variable '*Pd* presence' being a 1. Lower values of mass appear to be associated with a lower likeliehood of *Pd* being present.  
 
+<font size="4">**Slope**:</font> Dividing the slope coefficient by four will give us an approximate estimate for the maximum predicted effect on the response of a unit change in the predictor. Slope of the 'mass' predictor variable was **0.463**. In this case, a difference in 1 unit of bat mass (g) corresponds to a increase in the probability of fungus presence of 12%, since 0.463/4 = 0.12.
+
+<font size="4">**AIC**:</font> For the scope of this assignment, I will compare this model's AIC value of **60.181** to the AIC value of the previous model, which was very close at 61.108. This model is *slightly* better, but still not great. 
+
+<font size="4">**P-value**:</font> The p-value for the 'mass' predictor variable is **0.0463**, which *is* less than 0.05. So, we can say that mass is a statistically significant predictor variable in this model.
+
+<font size="4">**Residual deviance**:</font> How well can the response variable be predicted by the specific model? The lower the value, the better the model is able to predict the value of the response variable. Here, the residual deviance was **56.181 on 42 degrees of freedom**. To fully interpret this, we will have to compute the Chi-Square statistic... (Null deviance - Residual deviance) with *P* degrees of freedom. Ours is about 4.5, with 1 dof. This generates a p-value of about 0.033895 (via [statology](https://www.statology.org/interpret-glm-output-in-r/), which is still significant.
+
+<font size="4">**Coefficient estimate**:</font> average change in the odds of the response variable associated with a one unit increase in each predictor variable... Here, a one unit increase in the 'mass' predictor variable is associated with an average change of **0.4629529** in the log odds of the response variable '*Pd* presence' being a 1. Lower values of mass appear to be associated with a lower likelihood of *Pd* being present.
