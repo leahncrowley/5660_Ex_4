@@ -26,9 +26,15 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ![](C:/Users/lcrowley1/OneDrive%20-%20Austin%20Peay%20State%20University/Desktop/Advanced/4-GLMS/5660_Ex_4/pd.jpg){width="506"}
 
-Wing from dead tri-colored bat (*Perimyotis subflavus*) shows points of orange-yellow fluorescence when exposed to UV light. Read more [here](https://www.usgs.gov/programs/environmental-health-program/science/black-light-detects-white-nose-syndrome-bats)
+Wing from dead tri-colored bat (*Perimyotis subflavus*) shows points of orange-yellow fluorescence when exposed to UV light. Read more [here](https://www.usgs.gov/programs/environmental-health-program/science/black-light-detects-white-nose-syndrome-bats).
 
-# What is Pd?
+# What is *Pd*?
+
+*Pseudogymnoascus destructans* (*P. desctructans* or *Pd*)is a [psychrophilic](https://www.merriam-webster.com/dictionary/psychrophilic) fungus that is the causative agent for the disease white-nose syndrome (WNS), which is one of the most significant threats to many North American bat species. This fungus grows optimally between 12-15 degrees C and in areas of high humidity (over 85%), which happen to be characteristics similar to many North American bat hibernacula. In hibernation, as bats enter torpor, their body temperatures lower to match the ambient -- and fungus-supporting -- temperature of the hibernacula. When the fungus grows on the bat bodies, typically on wings and around their faces, it increases water loss from the bats' bodies. Dehydrated, fungus-impacted bats arouse from torpor more frequently throughout hibernation to replenish water. However, increased arousals from torpor throughout the season cause bats to burn through their fat reserves too quickly. With no food outside to replenish these, WNS-impacted bats starve and rarely survive winter.
+
+![](C:/Users/lcrowley1/OneDrive%20-%20Austin%20Peay%20State%20University/Desktop/Advanced/4-GLMS/5660_Ex_4/pd4.png)
+
+Hibernating little brown bats (*Myotis lucifugus*) with *Pd* growing on faces and wings. Read more [here](https://www.whitenosesyndrome.org/static-page/what-is-white-nose-syndrome).
 
 # Pd and Bat Age
 
@@ -60,7 +66,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Pd and Bat Mass
 
-```{r Pd and Bat Mass - Plot, echo=FALSE}
+```{r Pd and Bat Mass - Plot, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
 # Plot binary data - Presence of P. destructans on bat as a function of bat mass in grams
@@ -74,7 +80,7 @@ knitr::opts_chunk$set(echo = FALSE)
   
 ```
 
-````{r Pd and Bat Mass - Model, echo=FALSE}
+```{r Pd and Bat Mass - Model, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
 # Model this relationship:
@@ -85,4 +91,4 @@ coef(model_bats_mass)
 confint(model_bats_mass) 
 summary(model_bats_mass)
 
-````
+```
