@@ -26,15 +26,25 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ![](C:/Users/lcrowley1/OneDrive%20-%20Austin%20Peay%20State%20University/Desktop/Advanced/4-GLMS/5660_Ex_4/pd.jpg){width="506"}
 
-Wing from dead tri-colored bat (*Perimyotis subflavus*) shows points of orange-yellow fluorescence when exposed to UV light. Read more [here](https://www.usgs.gov/programs/environmental-health-program/science/black-light-detects-white-nose-syndrome-bats).
+<font size="2">Wing from dead tri-colored bat (*Perimyotis subflavus*) shows points of orange-yellow fluorescence when exposed to UV light. Read more [here](https://www.usgs.gov/programs/environmental-health-program/science/black-light-detects-white-nose-syndrome-bats). </font>
 
 # What is *Pd*?
 
-*Pseudogymnoascus destructans* (*P. desctructans* or *Pd*)is a [psychrophilic](https://www.merriam-webster.com/dictionary/psychrophilic) fungus that is the causative agent for the disease white-nose syndrome (WNS), which is one of the most significant threats to many North American bat species. This fungus grows optimally between 12-15 degrees C and in areas of high humidity (over 85%), which happen to be characteristics similar to many North American bat hibernacula. In hibernation, as bats enter torpor, their body temperatures lower to match the ambient -- and fungus-supporting -- temperature of the hibernacula. When the fungus grows on the bat bodies, typically on wings and around their faces, it increases water loss from the bats' bodies. Dehydrated, fungus-impacted bats arouse from torpor more frequently throughout hibernation to replenish water. However, increased arousals from torpor throughout the season cause bats to burn through their fat reserves too quickly. With no food outside to replenish these, WNS-impacted bats starve and rarely survive winter.
+***Pseudogymnoascus destructans*** (*P. desctructans* or *Pd*) is a [psychrophilic](https://www.merriam-webster.com/dictionary/psychrophilic) fungus that is the causative agent for the disease white-nose syndrome (WNS), which is one of the most significant threats to many North American bat species. This fungus grows optimally between 12-15 degrees C and in areas of high humidity (over 85%), which happen to be characteristics similar to many North American bat [hibernacula](https://www.merriam-webster.com/dictionary/hibernaculum). In hibernation, as bats enter [torpor](https://www.merriam-webster.com/dictionary/torpor), their body temperatures lower to match the ambient -- and fungus-supporting -- temperature of the hibernacula. When the fungus grows on the bat bodies, typically on wings and around their faces, it increases water loss from the bats' bodies. Dehydrated, fungus-impacted bats arouse from torpor more frequently throughout hibernation to replenish water. However, increased arousals from torpor throughout the season cause bats to burn through their fat reserves too quickly. With no food outside to replenish these, WNS-impacted bats starve and rarely survive winter.
 
 ![](C:/Users/lcrowley1/OneDrive%20-%20Austin%20Peay%20State%20University/Desktop/Advanced/4-GLMS/5660_Ex_4/pd4.png)
 
-Hibernating little brown bats (*Myotis lucifugus*) with *Pd* growing on faces and wings. Read more [here](https://www.whitenosesyndrome.org/static-page/what-is-white-nose-syndrome).
+<font size="2">Hibernating little brown bats (*Myotis lucifugus*) with *Pd* growing on faces and wings. Read more [here](https://www.whitenosesyndrome.org/static-page/what-is-white-nose-syndrome).</font>
+
+For this assignment, I used a data set from the Haase lab that includes data collected from 44 bats, specifically:
+
+-   Bat age in years,
+
+-   bat mass in grams, and
+
+-   presence (1) or absence (2) of *Pd* on bat body
+
+I was interested in looking at how bat age and mass may impact the probability that the fungus will be found on a bat. To do model and visualize this, I used a GLM with a [binomial family](https://www.statmethods.net/advstats/glm.html) and a logit link function, which is the default function for binomial data. As we discussed in class, the logit is the natural logarithm of the odds of occurrence; the odds are defined as the ratio of successes to failures.
 
 # Pd and Bat Age
 
@@ -63,6 +73,24 @@ knitr::opts_chunk$set(echo = FALSE)
   summary(model_bats_age)
 
 ```
+## Interpretations
+**Coefficient estimate**: average change in the odds of the response variable associated with a one unit increase in each predictor variable... Here, a one unit increase in the 'age' predictor variable is associated with an average change of **0.13416** in the log odds of the response variable '*Pd* presence' being a 1. Lower values of age appear to be associated with a lower likelihood of *Pd* being present.  
+
+**P-value**: The p-value for the 'age' predictor variable is **0.0701**, which is not less than 0.05. So, we can say that age is *not* a statistically significant predictor variable in this model. 
+
+**Residual deviance**: How well can the response variable be predicted by the specific model? The lower the value, the better the model is able to predict the value of the response variable. Here, the residual deviance was **57.108  on 42  degrees of freedom**. o fully interpret this, we will have to compute the Chi-Square statistic... (Null deviance - Residual deviance) with *P* degrees of freedom. Ours is about 3, with 1 dof. This generates a p-value of about 0.083265 (via [statology](https://www.statology.org/interpret-glm-output-in-r/), which still is not significant. Age may not be the best predictor of *Pd* presence. 
+
+**AIC** For the scope of this assignment, I will compare this model's AIC value of **61.108** to the AIC value of the next model, which uses bat mass as a predictor variable. 
+
+**Slope**: Dividing the slope coefficient by four will give us an approximate estimate for the maximum predicted effect on the response of a unit change in the predictor. Slope of the 'age' predictor variable was 
+
+
+
+5.1.
+\
+\
+In this case, a difference in 1 unit of grain size (mm) corresponds to a increase in the probability of spider presence of 128% since 5.1/4 = 1.28. (*100 to convert to percent=128%). Notice the scale of grainsize; it is 0.24 to 1.04 mm. 
+
 
 # Pd and Bat Mass
 
@@ -92,3 +120,7 @@ confint(model_bats_mass)
 summary(model_bats_mass)
 
 ```
+
+## Interpretations
+**Coefficient estimate**: average change in the odds of the response variable associated with a one unit increase in each predictor variable... Here, the 'mass' predictor variable is associated with an average change of 0.4630 in the log odds of the response variable '*Pd* presence' being a 1. Lower values of mass appear to be associated with a lower likeliehood of *Pd* being present.  
+
