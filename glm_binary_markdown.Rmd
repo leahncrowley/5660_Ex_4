@@ -47,7 +47,7 @@ For this assignment, I used a data set from the Haase lab that includes data col
 
 I was interested in looking at how bat age and mass may impact the probability that the fungus will be found on a bat. To do model and visualize this, I used a GLM with a [binomial family](https://www.statmethods.net/advstats/glm.html) and a logit link function, which is the default function for binomial data. As we discussed in class, the logit is the natural logarithm of the odds of occurrence; the odds are defined as the ratio of successes to failures.
 
-# Pd and Bat Age
+# *Pd* and Bat Age
 
 ```{r Pd and Bat Age - Plot, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -87,7 +87,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <font size="4">**Coefficient estimate**:</font> average change in the odds of the response variable associated with a one unit increase in each predictor variable... Here, a one unit increase in the 'age' predictor variable is associated with an average change of **0.13416** in the log odds of the response variable '*Pd* presence' being a 1. Lower values of age appear to be associated with a lower likelihood of *Pd* being present.
 
-# Pd and Bat Mass
+# *Pd* and Bat Mass
 
 ```{r Pd and Bat Mass - Plot, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
